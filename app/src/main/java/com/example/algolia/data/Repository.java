@@ -44,9 +44,9 @@ public class Repository {
     }
 
     //Network related operation
-    public LiveData<List<Post>> getHits() {
+    public LiveData<List<Post>> getposts() {
         PostNetworkDataSource networkDataSource = InjectorUtils
                 .provideNetworkDataSource();
-        return networkDataSource.getHits();
+        return networkDataSource.getposts();
     }
 }

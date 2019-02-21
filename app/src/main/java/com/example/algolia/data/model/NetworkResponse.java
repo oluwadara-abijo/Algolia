@@ -10,16 +10,16 @@ import java.util.List;
 public class NetworkResponse implements Parcelable {
 
     //Fields
-    @SerializedName("hits")
+    @SerializedName("posts")
     private List<Post> mPosts;
-    @SerializedName("nbHits")
-    private int mNbHits;
+    @SerializedName("nbposts")
+    private int mNbposts;
     @SerializedName("pages")
     private int mNbPages;
 
     protected NetworkResponse(Parcel in) {
         mPosts = in.createTypedArrayList(Post.CREATOR);
-        mNbHits = in.readInt();
+        mNbposts = in.readInt();
         mNbPages = in.readInt();
     }
 
@@ -30,7 +30,7 @@ public class NetworkResponse implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeTypedList(mPosts);
-        dest.writeInt(mNbHits);
+        dest.writeInt(mNbposts);
         dest.writeInt(mNbPages);
     }
 

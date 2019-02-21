@@ -28,7 +28,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity {
 
     //UI Elements
-    @BindView(R.id.rv_hits)
+    @BindView(R.id.rv_posts)
     RecyclerView mRecyclerView;
     @BindView(R.id.pb_loading_indicator)
     ProgressBar mLoadingIndicator;
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 if (mPosition == RecyclerView.NO_POSITION) mPosition = 0;
                 mRecyclerView.smoothScrollToPosition(mPosition);
 
-                // Show the post list or the loading screen based on whether the recipe data exists
+                // Show the post list or the loading screen based on whether the post data exists
                 // and is loaded
                 if (posts != null && posts.size() != 0) {
                     showData();

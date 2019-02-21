@@ -13,7 +13,7 @@ public class MainActivityViewModel extends ViewModel {
     private final LiveData<List<Post>> mPosts;
 
     MainActivityViewModel(Repository repository) {
-        mPosts = repository.getHits();
+        mPosts = repository.getposts();
     }
 
     LiveData<List<Post>> getPosts() {

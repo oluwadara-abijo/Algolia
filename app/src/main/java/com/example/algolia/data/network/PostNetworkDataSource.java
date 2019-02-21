@@ -42,14 +42,14 @@ public class PostNetworkDataSource {
         return sInstance;
     }
 
-    //Gets the hits from network
-    public LiveData<List<Post>> getHits() {
+    //Gets the posts from network
+    public LiveData<List<Post>> getposts() {
         final MutableLiveData<List<Post>> mutableLiveData = new MutableLiveData<>();
 
         mExecutors.networkIO().execute(() -> {
             PostInterface mPostInterface = PostClient.getClient();
 
-            mPostInterface.getHits().enqueue(new Callback<NetworkResponse>() {
+            mPostInterface.getPosts().enqueue(new Callback<NetworkResponse>() {
                 @Override
                 public void onResponse(Call<NetworkResponse> call, Response<NetworkResponse> response) {
                     Log.d(LOG_TAG, String.valueOf(response));

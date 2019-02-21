@@ -7,5 +7,5 @@ import retrofit2.http.GET;
 
 public interface PostInterface {
     @GET("search_by_date?tags=story&page=1")
-    Call<NetworkResponse> getHits();
+    Call<NetworkResponse> getPosts();
 }
