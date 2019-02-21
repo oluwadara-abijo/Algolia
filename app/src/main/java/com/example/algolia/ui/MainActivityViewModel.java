@@ -4,20 +4,19 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModel;
 
 import com.example.algolia.data.Repository;
-import com.example.algolia.data.model.Hit;
-import com.example.algolia.data.model.NetworkResponse;
+import com.example.algolia.data.model.Post;
 
 import java.util.List;
 
 public class MainActivityViewModel extends ViewModel {
 
-    private final LiveData<List<Hit>> mHits;
+    private final LiveData<List<Post>> mPosts;
 
     MainActivityViewModel(Repository repository) {
-        mHits = repository.getHits();
+        mPosts = repository.getHits();
     }
 
-    LiveData<List<Hit>> getHits() {
-        return mHits;
+    LiveData<List<Post>> getPosts() {
+        return mPosts;
     }
 }

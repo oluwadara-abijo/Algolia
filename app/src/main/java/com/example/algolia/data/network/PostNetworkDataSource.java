@@ -5,7 +5,7 @@ import android.arch.lifecycle.MutableLiveData;
 import android.util.Log;
 
 import com.example.algolia.AppExecutors;
-import com.example.algolia.data.model.Hit;
+import com.example.algolia.data.model.Post;
 import com.example.algolia.data.model.NetworkResponse;
 
 import java.util.List;
@@ -14,28 +14,28 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HitNetworkDataSource {
+public class PostNetworkDataSource {
 
     // For Singleton instantiation
     private static final Object LOCK = new Object();
-    private static final String LOG_TAG = HitNetworkDataSource.class.getSimpleName();
-    private static HitNetworkDataSource sInstance;
+    private static final String LOG_TAG = PostNetworkDataSource.class.getSimpleName();
+    private static PostNetworkDataSource sInstance;
 
     private final AppExecutors mExecutors;
 
     //Constructor
-    private HitNetworkDataSource(AppExecutors executors) {
+    private PostNetworkDataSource(AppExecutors executors) {
         mExecutors = executors;
     }
 
     /**
      * Get the singleton for this class
      */
-    public static HitNetworkDataSource getInstance(AppExecutors executors) {
+    public static PostNetworkDataSource getInstance(AppExecutors executors) {
         Log.d(LOG_TAG, "Getting the network data source");
         if (sInstance == null) {
             synchronized (LOCK) {
-                sInstance = new HitNetworkDataSource(executors);
+                sInstance = new PostNetworkDataSource(executors);
                 Log.d(LOG_TAG, "Made new network data source");
             }
         }
@@ -43,20 +43,20 @@ public class HitNetworkDataSource {
     }
 
     //Gets the hits from network
-    public LiveData<List<Hit>> getHits() {
-        final MutableLiveData<List<Hit>> mutableLiveData = new MutableLiveData<>();
+    public LiveData<List<Post>> getHits() {
+        final MutableLiveData<List<Post>> mutableLiveData = new MutableLiveData<>();
 
         mExecutors.networkIO().execute(() -> {
-            HitInterface mHitInterface = HitClient.getClient();
+            PostInterface mPostInterface = PostClient.getClient();
 
-            mHitInterface.getHits().enqueue(new Callback<NetworkResponse>() {
+            mPostInterface.getHits().enqueue(new Callback<NetworkResponse>() {
                 @Override
                 public void onResponse(Call<NetworkResponse> call, Response<NetworkResponse> response) {
                     Log.d(LOG_TAG, String.valueOf(response));
                     NetworkResponse networkResponse = response.body();
                     if (networkResponse != null) {
-                        List<Hit> hitList = networkResponse.getmHits();
-                        mutableLiveData.postValue(hitList);
+                        List<Post> postList = networkResponse.getmPosts();
+                        mutableLiveData.postValue(postList);
 
                     }
                 }

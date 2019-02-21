@@ -5,17 +5,25 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Hit implements Parcelable {
+public class Post implements Parcelable {
 
     //Fields
-    @SerializedName("createdAt")
+    @SerializedName("created_at")
     private String createdAt;
     @SerializedName("title")
     private String title;
 
-    protected Hit(Parcel in) {
+    protected Post(Parcel in) {
         createdAt = in.readString();
         title = in.readString();
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
     }
 
     @Override
@@ -29,15 +37,15 @@ public class Hit implements Parcelable {
         return 0;
     }
 
-    public static final Creator<Hit> CREATOR = new Creator<Hit>() {
+    public static final Creator<Post> CREATOR = new Creator<Post>() {
         @Override
-        public Hit createFromParcel(Parcel in) {
-            return new Hit(in);
+        public Post createFromParcel(Parcel in) {
+            return new Post(in);
         }
 
         @Override
-        public Hit[] newArray(int size) {
-            return new Hit[size];
+        public Post[] newArray(int size) {
+            return new Post[size];
         }
     };
 }
