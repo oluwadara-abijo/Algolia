@@ -27,6 +27,7 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
+<<<<<<< HEAD
     //UI Elements
     @BindView(R.id.rv_posts)
     RecyclerView mRecyclerView;
@@ -38,6 +39,20 @@ public class MainActivity extends AppCompatActivity {
 
     private int numberOfPosts;
 
+||||||| merged common ancestors
+=======
+    //UI Elements
+    @BindView(R.id.rv_hits)
+    RecyclerView mRecyclerView;
+    @BindView(R.id.pb_loading_indicator)
+    ProgressBar mLoadingIndicator;
+
+    private PostAdapter mAdapter;
+    private int mPosition = RecyclerView.NO_POSITION;
+
+    private int numberOfPosts;
+
+>>>>>>> 8d532be2b5beffea8669007a98b7cc2918e6f9e0
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         MainViewModelFactory factory = InjectorUtils.provideMainActivityViewModelFactory(this.getApplicationContext());
         MainActivityViewModel mViewModel = ViewModelProviders.of(this, factory).get(MainActivityViewModel.class);
 
+<<<<<<< HEAD
         if (isNetworkAvailable()) {
             mViewModel.getPosts().observe(this, posts -> {
                 mAdapter.setPosts(posts);
@@ -89,6 +105,33 @@ public class MainActivity extends AppCompatActivity {
         NetworkInfo activeNetworkInfo = Objects.requireNonNull(connectivityManager)
                 .getActiveNetworkInfo();
         return activeNetworkInfo != null;
+||||||| merged common ancestors
+=======
+        if (isNetworkAvailable()) {
+            mViewModel.getPosts().observe(this, posts -> {
+                mAdapter.setPosts(posts);
+                if (mPosition == RecyclerView.NO_POSITION) mPosition = 0;
+                mRecyclerView.smoothScrollToPosition(mPosition);
+
+                // Show the post list or the loading screen based on whether the recipe data exists
+                // and is loaded
+                if (posts != null && posts.size() != 0) {
+                    showData();
+                    numberOfPosts = posts.size();
+                } else showLoading();
+
+            });
+
+        }
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = Objects.requireNonNull(connectivityManager)
+                .getActiveNetworkInfo();
+        return activeNetworkInfo != null;
+>>>>>>> 8d532be2b5beffea8669007a98b7cc2918e6f9e0
     }
 
     private void showData() {

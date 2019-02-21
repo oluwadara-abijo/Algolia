@@ -42,14 +42,30 @@ public class PostNetworkDataSource {
         return sInstance;
     }
 
+<<<<<<< HEAD:app/src/main/java/com/example/algolia/data/network/PostNetworkDataSource.java
     //Gets the posts from network
     public LiveData<List<Post>> getposts() {
         final MutableLiveData<List<Post>> mutableLiveData = new MutableLiveData<>();
+||||||| merged common ancestors
+    //Gets the hits from network
+    public LiveData<List<Hit>> getHits() {
+        final MutableLiveData<List<Hit>> mutableLiveData = new MutableLiveData<>();
+=======
+    //Gets the hits from network
+    public LiveData<List<Post>> getHits() {
+        final MutableLiveData<List<Post>> mutableLiveData = new MutableLiveData<>();
+>>>>>>> 8d532be2b5beffea8669007a98b7cc2918e6f9e0:app/src/main/java/com/example/algolia/data/network/PostNetworkDataSource.java
 
         mExecutors.networkIO().execute(() -> {
             PostInterface mPostInterface = PostClient.getClient();
 
+<<<<<<< HEAD:app/src/main/java/com/example/algolia/data/network/PostNetworkDataSource.java
             mPostInterface.getPosts().enqueue(new Callback<NetworkResponse>() {
+||||||| merged common ancestors
+            mHitInterface.getHits().enqueue(new Callback<NetworkResponse>() {
+=======
+            mPostInterface.getHits().enqueue(new Callback<NetworkResponse>() {
+>>>>>>> 8d532be2b5beffea8669007a98b7cc2918e6f9e0:app/src/main/java/com/example/algolia/data/network/PostNetworkDataSource.java
                 @Override
                 public void onResponse(Call<NetworkResponse> call, Response<NetworkResponse> response) {
                     Log.d(LOG_TAG, String.valueOf(response));
