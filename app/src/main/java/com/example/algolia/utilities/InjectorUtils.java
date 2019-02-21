@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.example.algolia.AppExecutors;
 import com.example.algolia.data.Repository;
-import com.example.algolia.data.network.HitNetworkDataSource;
+import com.example.algolia.data.network.PostNetworkDataSource;
 import com.example.algolia.ui.MainViewModelFactory;
 
 /**
@@ -14,14 +14,14 @@ public class InjectorUtils {
 
     private static Repository provideRepository(Context context) {
         AppExecutors executors = AppExecutors.getInstance();
-        HitNetworkDataSource networkDataSource =
-                HitNetworkDataSource.getInstance(executors);
+        PostNetworkDataSource networkDataSource =
+                PostNetworkDataSource.getInstance(executors);
         return Repository.getInstance(networkDataSource, executors, context);
     }
 
-    public static HitNetworkDataSource provideNetworkDataSource() {
+    public static PostNetworkDataSource provideNetworkDataSource() {
         AppExecutors executors = AppExecutors.getInstance();
-        return HitNetworkDataSource.getInstance(executors);
+        return PostNetworkDataSource.getInstance(executors);
     }
 
     public static MainViewModelFactory provideMainActivityViewModelFactory(Context context) {

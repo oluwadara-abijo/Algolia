@@ -11,25 +11,25 @@ public class NetworkResponse implements Parcelable {
 
     //Fields
     @SerializedName("hits")
-    private List<Hit> mHits;
+    private List<Post> mPosts;
     @SerializedName("nbHits")
     private int mNbHits;
     @SerializedName("pages")
     private int mNbPages;
 
     protected NetworkResponse(Parcel in) {
-        mHits = in.createTypedArrayList(Hit.CREATOR);
+        mPosts = in.createTypedArrayList(Post.CREATOR);
         mNbHits = in.readInt();
         mNbPages = in.readInt();
     }
 
-    public List<Hit> getmHits() {
-        return mHits;
+    public List<Post> getmPosts() {
+        return mPosts;
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeTypedList(mHits);
+        dest.writeTypedList(mPosts);
         dest.writeInt(mNbHits);
         dest.writeInt(mNbPages);
     }
