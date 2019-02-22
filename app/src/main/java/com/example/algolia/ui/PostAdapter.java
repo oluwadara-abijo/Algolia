@@ -59,7 +59,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostAdapterVie
     }
 
     //ViewHolder class
-    public class PostAdapterViewHolder extends RecyclerView.ViewHolder {
+    class PostAdapterViewHolder extends RecyclerView.ViewHolder {
         //UI elements
         @BindView(R.id.post_title) TextView postTitle;
         @BindView(R.id.post_date) TextView postDate;

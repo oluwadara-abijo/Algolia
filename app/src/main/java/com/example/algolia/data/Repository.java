@@ -44,17 +44,8 @@ public class Repository {
     }
 
     //Network related operation
-<<<<<<< HEAD
-    public LiveData<List<Post>> getposts() {
-        PostNetworkDataSource networkDataSource = InjectorUtils
-||||||| merged common ancestors
-    public LiveData<List<Hit>> getHits() {
-        HitNetworkDataSource networkDataSource = InjectorUtils
-=======
-    public LiveData<List<Post>> getHits() {
-        PostNetworkDataSource networkDataSource = InjectorUtils
->>>>>>> 8d532be2b5beffea8669007a98b7cc2918e6f9e0
-                .provideNetworkDataSource();
-        return networkDataSource.getposts();
+    public LiveData<List<Post>> getPosts() {
+        PostNetworkDataSource networkDataSource = InjectorUtils.provideNetworkDataSource();
+        return networkDataSource.getPosts();
     }
 }
